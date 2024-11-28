@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depth Any Camera (DAC) Project</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .section {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+      text-align: center;
+    }
+    ul, ol {
+      margin: 10px 0 20px 40px;
+    }
+    p {
+      margin: 10px 0;
+      text-align: justify;
+    }
+    .links ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .links li {
+      margin: 5px 0;
+    }
+    .links a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Depth Any Camera: Zero-Shot Metric Depth Estimation from Any Camera</h1>
+    <hr>
+    <h2>Introduction</h2>
+    <p>
+      Monocular depth estimation is crucial in applications like autonomous driving, robotics, and AR/VR. However, achieving accurate metric depth estimation across diverse camera types, such as fisheye and 360° cameras with large fields of view (FoVs), presents significant challenges. Existing methods trained on perspective images often fail to generalize effectively to large FoV cameras due to distortions and differences in camera parameters. Addressing these limitations is essential for enhancing the generalization and applicability of depth estimation systems.
+    </p>
+
+    <h2>Objective</h2>
+    <p>The primary goal of the Depth Any Camera (DAC) framework is to enable zero-shot metric depth estimation across diverse camera types, including fisheye and 360° cameras, using a model trained exclusively on perspective images. This approach aims to provide a unified solution that mitigates the challenges posed by varying FoVs, distortions, and resolution inconsistencies during training and testing.</p>
+
+    <h2>Methodology</h2>
+    <ol>
+      <li><b>Equi-Rectangular Projection (ERP):</b> A unified image representation that maps images from different camera types into a shared space. This allows consistent processing across varying FoVs.</li>
+      <li><b>Image-to-ERP Conversion:</b> Efficient conversion of input images to ERP patches using grid sampling and gnomonic projection. This process incorporates camera pitch awareness and enables online ERP augmentations.</li>
+      <li><b>FoV Alignment:</b> A preprocessing step to adjust diverse FoV training samples to a predefined ERP patch size, ensuring efficient training while preserving essential content.</li>
+      <li><b>Multi-Resolution Training:</b> Incorporating multiple resolutions in training to address resolution mismatches between ERP patches during training and large FoV testing images.</li>
+      <li><b>Depth Model and Loss Function:</b> The DAC framework utilizes a simplified version of the iDisc architecture with cross-attention and self-attention mechanisms and trains the model using the SIlog loss function to optimize metric depth predictions.</li>
+    </ol>
+
+    <h2>Results</h2>
+    <p>The DAC framework was tested across four large FoV datasets: Matterport3D, Pano3D-GV2, ScanNet++, and KITTI360. The results demonstrated the following:</p>
+    <ul>
+      <li><b>Improved Accuracy:</b> DAC significantly outperformed state-of-the-art methods like Metric3Dv2 and UniDepth, with improvements of up to 50% in δ1 accuracy.</li>
+      <li><b>Robust Generalization:</b> The proposed framework achieved robust generalization to both indoor and outdoor scenes, surpassing existing baselines in metric depth estimation accuracy.</li>
+      <li><b>Ablation Studies:</b> Ablation studies highlighted the critical role of FoV alignment and multi-resolution training in enhancing the generalization of DAC.</li>
+      <li><b>Qualitative Evaluations:</b> DAC's ability to generate consistent and accurate depth maps for diverse camera types was showcased without requiring camera-specific fine-tuning.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      The DAC framework provides a comprehensive solution for zero-shot metric depth estimation across diverse camera types. By leveraging Equi-Rectangular Projection, FoV alignment, and multi-resolution training, DAC bridges the gap between perspective-trained models and large FoV cameras. Its success paves the way for improved depth estimation in challenging real-world applications, offering a versatile and robust tool for downstream tasks in autonomous systems and beyond.
+    </p>
+
+    <hr>
+
+    <h3>Learn More</h3>
+    <ul>
+      <li><a href="#" target="_blank">Project Page (Coming Soon)</a></li>
+      <li><a href="#" target="_blank">Paper (Coming Soon)</a></li>
+    </ul>
+
+    <hr>
+    <h3>Visuals</h3>
+    <div class="visuals">
+      <!-- <img src="image1-placeholder.jpg" alt="Visual 1" style="width: 100%; max-width: 400px; margin: 10px;">
+      <img src="image2-placeholder.jpg" alt="Visual 2" style="width: 100%; max-width: 400px; margin: 10px;"> -->
+      <video controls style="width: 100%; max-width: 400px; margin: 10px;">
+        <source src="figures/supplementary_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      padding: 0;
+    }
+    .section {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    ul, ol {
+      margin: 10px 0 20px 20px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .visuals img, .visuals video {
+      display: block;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style> -->
+</body>
+</html>

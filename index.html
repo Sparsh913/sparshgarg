@@ -15,7 +15,16 @@
 <title>Sparsh Garg - Home</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<script type="text/javascript" src="js/hidebib.js"></script>
+<script type="text/javascript" src="js/hidebib.js">
+  function toggleProjects() {
+    var projectList = document.getElementById("projects-list");
+    if (projectList.style.display === "block") {
+      projectList.style.display = "none";
+    } else {
+      projectList.style.display = "block";
+    }
+  }
+</script>
 
 </head>
 <body>
@@ -47,8 +56,15 @@
               <img src="img.jpg" alt="My picture" height="250" style="border-radius: 15px;" />
               <br><br>
               <p style="line-height: 2;"> <!-- This adds vertical spacing between links -->
-                <a href="javascript:toggleblock('contact')">Contact</a> | <a href="https://www.linkedin.com/in/sparsh-g/">LinkedIn</a> | <a href="https://scholar.google.com/citations?user=uP6sOhoAAAAJ&hl=en"> Google Scholar </a> | <a href="https://github.com/Sparsh913"> Github </a> | <a href="https://x.com/_sparshgarg_"> X </a> | <a href="https://drive.google.com/file/d/1HkE89Ar5pzVF-pmAOr3YzrINoPfqIdr9/view?usp=sharing"> CV </a>
+                <a href="javascript:toggleblock('contact')">Contact</a> | <a href="https://www.linkedin.com/in/sparsh-g/">LinkedIn</a> | <a href="https://scholar.google.com/citations?user=uP6sOhoAAAAJ&hl=en"> Google Scholar </a> | <a href="https://github.com/Sparsh913"> Github </a> | <a href="https://x.com/_sparshgarg_"> X </a> | <a href="https://drive.google.com/file/d/1HkE89Ar5pzVF-pmAOr3YzrINoPfqIdr9/view?usp=sharing"> CV </a> | <a href="javascript:toggleProjects()">Projects</a>
               </p>
+              <ul id="projects-list" style="display: none; text-align: left; list-style-type: none; padding: 0; margin-top: 10px;">
+                <li><a href="dac.html">Depth Any Camera</a></li>
+                <li><a href="splatsim.html">SplatSim</a></li>
+                <li><a href="vine_stereo.html">Vine Stereo</a></li>
+                <li><a href="prosthetic_arm.html">EMG Prosthetic Arm</a></li>
+                
+              </ul>
               <pre xml:space="preserve" id="contact" style="font-size: 15px; line-height: 1.8;">
     email: sparshg@andrew.cmu.edu
     Office: CIC Robotics Institute (near Lab 2)
@@ -63,6 +79,13 @@
     </div>
 
 <hr>
+
+<script type="text/javascript">
+  function toggleProjects() {
+    const projectList = document.getElementById("projects-list");
+    projectList.style.display = projectList.style.display === "block" ? "none" : "block";
+  }
+</script>
 
 <style>
   .paper-container {

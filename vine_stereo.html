@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StereoVine Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .section {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+      text-align: center;
+    }
+    ul, ol {
+      margin: 10px 0 20px 40px;
+    }
+    p {
+      margin: 10px 0;
+      text-align: justify;
+    }
+    .visuals img, .visuals video {
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-width: 100%;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .visuals figure {
+        margin: 20px auto;
+        text-align: center;
+        max-width: 100%;
+    }
+    .visuals img, .visuals video {
+    display: block;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 100%;
+    }
+    .visuals figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>VineStereo: An Optimized Deep Stereo Network and Dataset for Thin Grapevine Structures</h1>
+    <hr>
+    <h2>Introduction</h2>
+    <p>
+      Agricultural robotics faces significant challenges in tasks requiring precise manipulation of thin structures, such as grapevine pruning. Accurate perception of these delicate and intricate structures is critical but remains hindered by the scarcity of agricultural-specific datasets and the limitations of existing stereo-matching algorithms. Grapevine pruning, essential for optimizing yield and crop quality, is a labor-intensive process further exacerbated by skilled labor shortages. Addressing these issues is crucial for advancing automated solutions in viticulture and agricultural robotics.
+    </p>
+
+    <h2>Objective</h2>
+    <p>
+      To develop an edge-aware stereo-matching framework tailored for thin structure detection and perception, facilitating automated grapevine pruning. This research aims to overcome dataset scarcity by leveraging NeRF-Supervised Deep Stereo techniques for efficient data generation, ensuring the reliable and accurate reconstruction of thin structures in agricultural environments.
+    </p>
+
+    <h2>Methodology</h2>
+    <ol>
+      <li>
+        <b>Data Generation:</b>
+        <ul>
+          <li>Utilized NeRF-Supervised Deep Stereo (NSDS) to generate synthetic stereo image datasets with "pseudo" ground truth depth maps, reducing the need for extensive real-world data collection.</li>
+          <li>Generated a comprehensive dataset of 20,000 stereo image pairs reflecting diverse grapevine structures and conditions.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Edge-Aware Stereo-Matching:</b>
+        <ul>
+          <li>Introduced edge-awareness to the RAFT-Stereo framework by incorporating Sobel edge filtering and depth thresholding to enhance thin structure perception.</li>
+          <li>Fine-tuned the stereo-matching network using the synthetic datasets, with tailored masking strategies in GRU layers to improve depth estimation accuracy for thin structures.</li>
+        </ul>
+      </li>
+      <li>
+        <b>3D Reconstruction:</b>
+        <ul>
+          <li>Applied iterative point cloud registration using the colored Iterative Closest Point (ICP) algorithm to merge depth maps from multiple viewpoints, creating high-fidelity 3D reconstructions of grapevines.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Results</h2>
+    <ul>
+      <li><b>Qualitative Evaluation:</b> The proposed pipeline demonstrated superior reconstruction of thin grapevine structures compared to conventional stereo-matching methods, reducing artifacts and enhancing fine detail preservation.</li>
+      <li><b>Quantitative Evaluation:</b> Achieved a marked improvement in depth estimation accuracy, with the enhanced RAFT-Stereo network outperforming monocular depth estimation models, particularly in detecting fine structures.</li>
+      <li><b>Efficiency:</b> The NSDS-based approach significantly reduced data collection efforts while maintaining high fidelity in stereo datasets, demonstrating the scalability of the method for real-world applications.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      StereoVine represents a significant advancement in the automation of agricultural tasks, particularly grapevine pruning. By integrating NeRF-Supervised Deep Stereo techniques with edge-aware stereo-matching, this research addresses critical challenges in dataset scarcity and fine structure perception. The proposed framework enables reliable 3D reconstructions and automated pruning in viticulture, paving the way for broader applications in agricultural robotics. Future work will focus on integrating bud detection and cut point localization to further refine robotic pruning capabilities.
+    </p>
+
+    <hr>
+    <h3>Visuals</h3>
+    <div class="visuals">
+    <figure>
+        <img src="figures/teaser3(1).png" alt="Visual 1">
+        <figcaption>Figure 1: (a) shows the disparity map generated using the original RAFT-Stereo network; (b) Shows disparity map generated from our optimized edge-aware RAFT-Stereo</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/pipeline.png" alt="Visual 2">
+        <figcaption>Figure 2: Overview of VineStereo Matching Pipeline: This figure represents the integration of stereo images through dedicated encoders to a GRU-based network, which, along with disparity data and encoder-processed edge maps, refines the output to generate a detailed disparity map highlighting thin structures, as shown in the color-coded depth representation on the right.</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/realworld.png" alt="Visual 3">
+        <figcaption>Figure 3: Real world setup</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/qual3.png" alt="Visual 4">
+        <figcaption>Figure 4: Qualitative Results: Depth Map</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/gt_vs_ours.png" alt="Visual 5">
+        <figcaption>Figure 5: Qualitative Results: Point Cloud ground truth (left) vs ours (right)</figcaption>
+    </figure>
+    <figure>
+        <img src="figures/in_the_wild_fig.png" alt="Visual 6">
+        <figcaption>Figure 6: Qualitative Results: In-the-wild Vine Point Cloud</figcaption>
+    </figure>
+    <!-- <figure>
+        <video controls>
+        <source src="dummy-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <figcaption>Figure 3: Visualization of grapevine pruning process in simulation.</figcaption>
+    </figure> -->
+    </div>
+
+  </div>
+</body>
+</html>
