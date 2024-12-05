@@ -64,12 +64,13 @@
                 <li><a href="https://drive.google.com/file/d/1HkE89Ar5pzVF-pmAOr3YzrINoPfqIdr9/view?usp=sharing" target="_blank">CV</a></li>
                 <li><a href="javascript:toggleProjects()">Projects</a></li>
               </ul>
-              <ul id="projects-list" style="display: none; text-align: right; list-style-type: none; padding: 0; margin-top: 10px;">
-                <li><a href="dac.html">Depth Any Camera</a></li>
-                <li><a href="splatsim.html">SplatSim</a></li>
-                <li><a href="vine_stereo.html">Vine Stereo</a></li>
-                <li><a href="prosthetic_arm.html">EMG Prosthetic Arm</a></li>
-              </ul>
+              <!-- <li><a href="javascript:void(0)" onclick="toggleProjects()">Projects</a></li> -->
+              <div id="projects-list" class="dropdown hidden">
+                <a href="dac.html">Depth Any Camera</a>
+                <a href="splatsim.html">SplatSim</a>
+                <a href="vine_stereo.html">Vine Stereo</a>
+                <a href="prosthetic_arm.html">EMG Prosthetic Arm</a>
+              </div>
               <pre xml:space="preserve" id="contact" style="font-size: 15px; line-height: 1.8;">
     email: sparshg@andrew.cmu.edu
     Office: CIC Robotics Institute (near Lab 2)
@@ -85,14 +86,62 @@
 
 <hr>
 
-<script type="text/javascript">
+<script>
   function toggleProjects() {
     const projectList = document.getElementById("projects-list");
-    projectList.style.display = projectList.style.display === "block" ? "none" : "block";
+    if (projectList.classList.contains("hidden")) {
+      projectList.classList.remove("hidden");
+    } else {
+      projectList.classList.add("hidden");
+    }
   }
 </script>
 
 <style>
+  /* Dropdown container */
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Hide dropdown by default */
+  .hidden {
+    display: none;
+  }
+
+  /* Dropdown links */
+  .dropdown a {
+    text-decoration: none;
+    color: #007BFF;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+
+  .dropdown a:hover {
+    background-color: #e6f0ff;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .paper-container {
     display: flex;
     align-items: center;
@@ -142,7 +191,7 @@
     <div class="paper-description">
       <p><b id="papertitle">SplatSim: Zero-Shot Sim2Real Transfer of RGB Manipulation Policies Using Gaussian Splatting</b> <br/>
       Mohammad Nomaan Qureshi, <strong>Sparsh Garg</strong>, Francisco Yandun, David Held, George Kantor, Abhisesh Silwal<br />
-      (Under review at ICRA 2025)<br />
+      (Under review at ICRA 2025) (Spotlight Presentation at CoRL MRM-D Workshop)<br />
       <a href="https://www.arxiv.org/abs/2409.10161">pdf</a>  &nbsp 
       <a href="https://splatsim.github.io/">project page</a>  &nbsp 
       <a href="javascript:toggleblock('splatSim2024Abs')">abstract</a> &nbsp 
