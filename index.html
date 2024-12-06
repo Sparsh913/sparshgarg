@@ -88,14 +88,34 @@
 <hr>
 
 <script>
-  function toggleProjects() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const projectToggle = document.querySelector('a[href="javascript:toggleProjects()"]');
     const projectList = document.getElementById("projects-list");
-    if (projectList.classList.contains("hidden")) {
-      projectList.classList.remove("hidden");
-    } else {
-      projectList.classList.add("hidden");
+  
+    // Ensure dropdown is hidden when page loads
+    projectList.classList.add("hidden");
+  
+    // Toggle projects dropdown
+    function toggleProjects() {
+      projectList.classList.toggle("hidden");
     }
-  }
+  
+    // Add click event to the toggle link
+    projectToggle.addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent this click from immediately closing the dropdown
+      toggleProjects();
+    });
+  
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      // Check if the click is outside the dropdown and the toggle link
+      if (!projectList.contains(event.target) && 
+          !projectToggle.contains(event.target) && 
+          !projectList.classList.contains("hidden")) {
+        projectList.classList.add("hidden");
+      }
+    });
+  });
 </script>
 
 <style>
