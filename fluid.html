@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Rheology Analysis via AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .section {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+      text-align: center;
+    }
+    ul, ol {
+      margin: 10px 0 20px 40px;
+    }
+    p {
+      margin: 10px 0;
+      text-align: justify;
+    }
+    .links ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .links li {
+      margin: 5px 0;
+    }
+    .links a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .visuals img, .visuals video {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      display: block;
+    }
+    .visuals .main-gif {
+      max-width: 600px; /* Larger size for the main GIF */
+    }
+    .visual-caption {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="section">
+    <h1>Automated Rheology Analysis via AI: Fluid Segmentation and Viscosity Estimation</h1>
+    <hr>
+    <h2>Introduction</h2>
+    <p>
+      Understanding fluid rheology is critical for diverse applications, ranging from chemical manufacturing to biomedical research. Traditional rheological analysis methods are often labor-intensive, requiring sophisticated instruments and expert knowledge. This project aims to simplify and automate the identification of fluid rheology parameters, such as viscosity, using artificial intelligence (AI). By combining advances in computer vision and machine learning, this work seeks to provide chemists with a practical and efficient tool for analyzing liquid properties in a variety of settings.
+    </p>
+
+    <h2>Objective</h2>
+    <ul>
+      <li><strong>Liquid Segmentation:</strong> Accurately identifying and segmenting liquid menisci in video sequences.</li>
+      <li><strong>Viscosity Estimation:</strong> Predicting absolute viscosity values from segmented mask sequences and motion data, such as angular velocity.</li>
+    </ul>
+
+    <h2>Methodology</h2>
+    <ol>
+      <li><b>Data Generation and Annotation:</b> Creating and annotating video datasets to simulate diverse experimental setups.</li>
+      <li><b>Segmentation Pipeline:</b> Fine-tuning SAM 2.1 with advanced augmentations to ensure robust segmentation performance.</li>
+      <li><b>Viscosity Prediction:</b> Designing a regressor using ResNet18 and LSTM layers for temporal modeling, optimized with a mixed loss function.</li>
+    </ol>
+
+    <h2>Results</h2>
+    <ul>
+      <li><strong>Liquid Segmentation:</strong> Achieved 100% accuracy in fluid classification, consistently capturing subtle meniscus details.</li>
+      <li><strong>Viscosity Estimation:</strong> Initial experiments show promising results with normalized viscosity predictions, supported by advanced augmentation and preprocessing techniques.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Visuals</h3>
+    <div class="visuals">
+      <img class="main-gif" src="figures/1.gif" alt="Viscosity Estimation Example">
+      <div class="visual-caption">Figure 1: Visualization of rotating vial for viscosity estimation.</div>
+      <img src="figures/fluid_pipeline.png" alt="Segmentation Example">
+      <div class="visual-caption">Figure 2: Fluid Viscosity classification pipeline.</div>
+    </div>
+
+    <hr>
+
+    <h2>Contribution</h2>
+    <p style="margin: 10px 0; text-align: justify;">
+      My contributions include:
+    </p>
+    <ul>
+      <li>Designing and implementing the liquid segmentation pipeline by fine-tuning SAM 2.1 with human-prompted annotations.</li>
+      <li>Generating, annotating, and preprocessing video datasets from scratch.</li>
+      <li>Developing the viscosity estimation model using sequence modeling and advanced loss functions.</li>
+      <li>Conducting extensive experiments with augmentations and normalization techniques.</li>
+      <li>Reporting and visualizing segmentation masks, viscosity predictions, and performance metrics to validate the pipeline.</li>
+    </ul>
+
+    <hr>
+
+    <div class="links">
+      <h3>Learn More</h3>
+      <ul>
+        <li><a href="#" target="_blank">Project Page (Coming Soon)</a></li>
+        <li><a href="#" target="_blank">Paper (Coming Soon)</a></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
