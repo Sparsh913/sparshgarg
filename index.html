@@ -267,15 +267,24 @@
         <b id="papertitle">Depth Any Camera (DAC): A Framework for Zero-Shot Metric Depth Estimation Across Diverse Camera Types</b> <br />
         Yuliang Guo*, <strong>Sparsh Garg*</strong>, S. Mahdi H. Miangoleh, Xinyu Huang, Liu Ren <br />
         (Under Review) <br />
-        <a href="https://drive.google.com/file/d/1yhUKVjfRbV_kd395rlVXSmNC2-8rIzMf/view?usp=sharing">pdf</a> &nbsp; 
-        <a href="#">project page (Coming Soon)</a> &nbsp;
-        <a href="javascript:toggleblock('dacAbstract')">abstract</a>
+        <a href="https://arxiv.org/pdf/2501.02464">pdf</a> &nbsp; 
+        <a href="https://yuliangguo.github.io/depth-any-camera/">project page</a> &nbsp;
+        <a href="javascript:toggleblock('dacAbstract')">abstract</a> &nbsp;
+        <a href="javascript:toggleblock('dacBib')">bibtex</a>
       </p>
   
       <div class="papermeta" id="dacMeta">
         <em id="dacAbstract" style="display: none;">
           Accurate metric depth estimation from monocular cameras is essential for applications such as autonomous driving, AR/VR, and robotics. While recent depth estimation methods demonstrate strong zero-shot generalization, achieving accurate metric depth across diverse camera types—particularly those with large fields of view (FoV) like fisheye and 360-degree cameras—remains challenging. This paper introduces <b>Depth Any Camera (DAC)</b>, a novel zero-shot metric depth estimation framework that extends a perspective-trained model to handle varying FoVs effectively. Notably, DAC is trained exclusively on perspective images, yet it generalizes seamlessly to fisheye and 360-degree cameras without requiring specialized training. DAC leverages Equi-Rectangular Projection (ERP) as a unified image representation, enabling consistent processing of images with diverse FoVs. Key components include an efficient Image-to-ERP patch conversion for seamless online augmentation in ERP space, a FoV alignment operation to support effective training across a broad range of FoVs, and multi-resolution data augmentation to address resolution discrepancies between training and testing. DAC achieves state-of-the-art zero-shot metric depth estimation, improving delta_1 accuracy by up to 50% on multiple indoor fisheye and 360-degree datasets, demonstrating robust generalization across camera types while relying only on perspective training data.
         </em>
+        <pre xml:space="preserve" id="dacBib" style="font-size: 12px; display: none;">
+          @inproceedings{guo2025depthanycamera,
+            title={Depth Any Camera: Zero-Shot Metric Depth Estimation from Any Camera},
+            author={Yuliang Guo and Sparsh Garg and S. Mahdi H. Miangoleh and Xinyu Huang and Liu Ren},
+            booktitle={arXiv},
+            year={2025}
+          }
+        </pre>
       </div>
   
       <script>
